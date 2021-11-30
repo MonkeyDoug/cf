@@ -119,22 +119,18 @@ ll lcm(ll a, ll b) { return a * b / __gcd(a, b); }
 /*
 Since the inital array is a permutation containing all numbers from 1 to n,
 and the resulting array removes the smaller element, we know that the last
-element must be the largest element in the initial array, or n.
+element must be the largest element ( n ) in the initial array.
 
 By checking whether n is the first or last, we know whether in the last step,
 n was added to the left or the right. Note that if n is neither the first or
 last, it means that the resulting array given is invalid since it is
 impossible based on how the initial array is prepared, we can output -1.
 
-If the resulting array is left appended, we must make sure n is paired with
-the last element of the resulting array, therefore, we first print
-out n, then print out the array starting at the last element until the second
-element.
-
-If the initial array right appended, we must make sure n is paired with the
-first elememt of the resulting array, therefore, we first print out the array
-starting from the second to last element, until the beginning of the array,
-we then print out n.
+If the first or last element does equal n, this means we have a valid
+permutation, we can simply print out the permutation in reverse order in order
+to get the initial array p. This is because if the permutation is valid, the
+largest element will always be the leftmost or the rightmost element, so it will
+always print the current element if it is not the largest element.
 */
 
 void solve() {
@@ -142,22 +138,12 @@ void solve() {
   read(n);
   vi v(n);
   trav(e, v) { read(e); }
-  if (v.front() == n) {
-    // Left Appended
-    cout << n << ' ';
-    for (int i = n - 1; i >= 1; --i) {
-      cout << v[i] << ' ';
-    }
-    cout << nl;
-  } else if (v.back() == n) {
-    // Right Appended
-    for (int i = n - 2; i >= 0; --i) {
-      cout << v[i] << ' ';
-    }
-    cout << n;
-    cout << nl;
-  } else {
+  if (v.front() != n && v.back() != n) {
     cout << -1 << nl;
+  } else {
+    reverse(all(v));
+    trav(e, v) { cout << e << ' '; }
+    cout << nl;
   }
   return;
 }

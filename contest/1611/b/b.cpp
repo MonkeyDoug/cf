@@ -116,19 +116,6 @@ vl ntv(ll X) {
 
 ll lcm(ll a, ll b) { return a * b / __gcd(a, b); }
 
-/*
- First Case - A is the only limiting factor of number of teams, the number of
- teams is A divided by 1 ( or just A )
-
- Second Case - B is the only limiting factor of number of teams, the number of
- teams is B divided by 1 ( or just B )
-
- Third Case - Both A and B are limit the number of teams. Since neither A nor B
- are the single limiting factor, we can think of A + B as one big group of the
- mathematicans and programmers combined, A + B is now a single limiting factor.
- Now, since each team has 4 members, the number of teams is ( A + B ) / 4.
-*/
-
 void solve() {
   ll a, b;
   read(a, b);
